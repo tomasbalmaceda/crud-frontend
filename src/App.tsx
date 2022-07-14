@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as C from "./App.styles";
 
-function App() {
+import { Table } from "./components/Table";
+import { Form } from "./components/Form";
+
+import { ContextProvider } from "./contexts/Context";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <C.Container>
+      <C.GlobalStyle />
+      <C.Header>
+        <C.Title>CRUD</C.Title>
+      </C.Header>
+      <ContextProvider>
+        <C.Table>
+          <Form />
+        </C.Table>
+        <C.Table>
+          <Table />
+        </C.Table>
+      </ContextProvider>
+    </C.Container>
   );
-}
+};
 
 export default App;
