@@ -3,10 +3,10 @@ import * as C from "./styles";
 
 import { api } from "../../helpers/api";
 
-import { Context } from "../../contexts/Context";
+import { DataContext } from "../../contexts/DataContext";
 
 export const Form = () => {
-  const { dispatch } = useContext(Context);
+  const { setLoading } = useContext(DataContext);
 
   const [tempUserData, setTempUserData] = useState({
     fullName: "",
@@ -34,12 +34,7 @@ export const Form = () => {
       tempUserData.email
     );
 
-    dispatch({
-      type: "CHANGE_LOADING_DATA",
-      payload: {
-        loadingData: true,
-      },
-    });
+    setLoading(true);
   };
 
   return (

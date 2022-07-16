@@ -3,7 +3,7 @@ import * as C from "./App.styles";
 import { Table } from "./components/Table";
 import { Form } from "./components/Form";
 
-import { ContextProvider } from "./contexts/Context";
+import { DataContextProvider } from "./contexts/DataContext";
 
 const App = () => {
   return (
@@ -12,14 +12,15 @@ const App = () => {
       <C.Header>
         <C.Title>CRUD</C.Title>
       </C.Header>
-      <ContextProvider>
+
+      <DataContextProvider>
         <C.Table>
           <Form />
         </C.Table>
         <C.Table>
           <Table />
         </C.Table>
-      </ContextProvider>
+      </DataContextProvider>
     </C.Container>
   );
 };

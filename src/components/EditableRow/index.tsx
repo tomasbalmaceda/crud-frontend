@@ -2,11 +2,11 @@ import React, { useContext, useState, SetStateAction } from "react";
 
 import * as C from "./styles";
 
-import { Context } from "../../contexts/Context";
-
 import { UserType } from "../../types/UserType";
 
 import { api } from "../../helpers/api";
+
+import { DataContext } from "../../contexts/DataContext";
 
 type Props = {
   item: UserType;
@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const EditableRow = ({ item, setEditableModeId }: Props) => {
-  const { dispatch } = useContext(Context);
+  const { setLoading } = useContext(DataContext);
 
   const [tempData, setTempData] = useState({
     _id: item._id,
@@ -36,12 +36,7 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
   const handleEditContact = () => {
     api.editContact(tempData);
 
-    dispatch({
-      type: "CHANGE_LOADING_DATA",
-      payload: {
-        loadingData: true,
-      },
-    });
+    setLoading(true);
 
     setEditableModeId("");
   };

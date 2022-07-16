@@ -2,20 +2,19 @@ import { useEffect, useState, useContext, Fragment } from "react";
 
 import * as C from "./styles";
 
-import { Context } from "../../contexts/Context";
-
 import { api } from "../../helpers/api";
 
 import { ReadOnlyRow } from "../ReadOnlyRow";
-
 import { EditableRow } from "../EditableRow";
 
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { UserType } from "../../types/UserType";
 
+import { DataContext } from "../../contexts/DataContext";
+
 export const Table = () => {
-  const { state, dispatch } = useContext(Context);
+  const { loading, setLoading } = useContext(DataContext);
 
   const [editableModeId, setEditableModeId] = useState("");
 
@@ -24,18 +23,13 @@ export const Table = () => {
   useEffect(() => {
     api.getAllContacts().then((response) => {
       setContactsData(response);
-      dispatch({
-        type: "CHANGE_LOADING_DATA",
-        payload: {
-          loadingData: false,
-        },
-      });
+      setLoading(false);
     });
-  }, [state.loading.loadingData]);
+  }, [loading]);
 
   return (
     <>
-      {state.loading.loadingData ? (
+      {loading ? (
         <CircularProgress />
       ) : (
         <>
