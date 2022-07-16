@@ -1,12 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
 import {
-  crudType,
-  crudInitialState,
-  crudReducer,
-} from "../reducers/usersReducer";
-
-import {
   loadingType,
   loadingInitialState,
   loadingReducer,
@@ -15,7 +9,6 @@ import {
 import { reducerActionType } from "../types/reducerActionType";
 
 type initialStateType = {
-  crud: crudType;
   loading: loadingType;
 };
 
@@ -25,7 +18,6 @@ type ContextType = {
 };
 
 const initialState = {
-  crud: crudInitialState,
   loading: loadingInitialState,
 };
 
@@ -35,7 +27,6 @@ export const Context = createContext<ContextType>({
 });
 
 const mainReducer = (state: initialStateType, action: reducerActionType) => ({
-  crud: crudReducer(state.crud, action),
   loading: loadingReducer(state.loading, action),
 });
 

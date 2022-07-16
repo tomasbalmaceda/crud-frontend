@@ -12,19 +12,18 @@ import { EditableRow } from "../EditableRow";
 
 import CircularProgress from "@mui/material/CircularProgress";
 
+import { UserType } from "../../types/UserType";
+
 export const Table = () => {
   const { state, dispatch } = useContext(Context);
 
   const [editableModeId, setEditableModeId] = useState("");
 
+  const [contactsData, setContactsData] = useState<UserType[]>([]);
+
   useEffect(() => {
     api.getAllContacts().then((response) => {
-      dispatch({
-        type: "CHANGE_CRUD_DATA",
-        payload: {
-          crud: response,
-        },
-      });
+      setContactsData(response);
       dispatch({
         type: "CHANGE_LOADING_DATA",
         payload: {
@@ -40,7 +39,7 @@ export const Table = () => {
         <CircularProgress />
       ) : (
         <>
-          {state.crud.userData.length > 0 && (
+          {contactsData.length > 0 && (
             <C.Container>
               <C.Table>
                 <thead>
@@ -53,7 +52,7 @@ export const Table = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.crud.userData.map((item, index) => (
+                  {contactsData.map((item, index) => (
                     <Fragment key={index}>
                       {editableModeId === item._id ? (
                         <EditableRow
