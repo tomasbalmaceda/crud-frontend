@@ -3,6 +3,12 @@ import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
   body {
     font-family: 'Nanum Gothic', sans-serif;
     background-color: #17181f;

@@ -12,7 +12,6 @@ const App = () => {
       <C.Header>
         <C.Title>CRUD</C.Title>
       </C.Header>
-
       <DataContextProvider>
         <C.Table>
           <Form />

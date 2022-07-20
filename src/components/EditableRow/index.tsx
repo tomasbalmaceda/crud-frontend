@@ -8,6 +8,16 @@ import { api } from "../../helpers/api";
 
 import { DataContext } from "../../contexts/DataContext";
 
+import { motion } from "framer-motion";
+
+const svgVariants = {
+  hidden: { rotate: 90 },
+  visible: {
+    rotate: 0,
+    transtion: { duration: 1 },
+  },
+};
+
 type Props = {
   item: UserType;
   setEditableModeId: React.Dispatch<SetStateAction<string>>;
@@ -93,17 +103,37 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
       </td>
       <td>
         <C.StyledButton variant="contained" onClick={handleEditContact}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-            <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
-          </svg>
+          <motion.svg
+            variants={svgVariants}
+            initial="hidden"
+            animate="visible"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+          >
+            <path
+              fill="#FFFFFF"
+              d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"
+            />
+          </motion.svg>
         </C.StyledButton>
         <C.StyledButton
           variant="contained"
           onClick={() => setEditableModeId("")}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-          </svg>
+          <motion.svg
+            variants={svgVariants}
+            initial="hidden"
+            animate="visible"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+          >
+            <path
+              fill="#FFFFFF"
+              d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+            />
+          </motion.svg>
         </C.StyledButton>
       </td>
     </tr>

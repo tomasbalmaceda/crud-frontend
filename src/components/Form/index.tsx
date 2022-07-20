@@ -41,40 +41,40 @@ export const Form = () => {
     <div>
       <C.Form onSubmit={handleFormSubmit}>
         <C.StyledTextField
-          variant="outlined"
-          id="outlined-basic"
+          variant="filled"
           type="text"
           label="Enter a name..."
           name="fullName"
           required
           onChange={handleChange}
+          size="small"
         />
         <C.StyledTextField
-          variant="outlined"
-          id="outlined-basic"
+          variant="filled"
           type="text"
           label="Enter a address..."
           name="address"
           required
           onChange={handleChange}
+          size="small"
         />
         <C.StyledTextField
-          variant="outlined"
-          id="outlined-basic"
+          variant="filled"
           type="text"
           label="Enter a phone..."
           name="phoneNumber"
           required
           onChange={handleChange}
+          size="small"
         />
         <C.StyledTextField
-          variant="outlined"
-          id="outlined-basic"
+          variant="filled"
           type="email"
           label="Enter an email..."
           name="email"
           required
           onChange={handleChange}
+          size="small"
         />
 
         <C.StyledButton variant="contained" type="submit">

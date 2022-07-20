@@ -4,10 +4,10 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 export const StyledTextField = styled(TextField)`
-  background-color: #ffffff;
+  background-color: #eeeeee;
   border-radius: 4px;
   margin: 4px !important;
-  width: 150px;
+  width: 160px;
 
   input {
     font-family: "Nanum Gothic", sans-serif;
