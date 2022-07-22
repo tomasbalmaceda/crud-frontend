@@ -3,26 +3,32 @@ import axios from "axios";
 import { UserType } from "../types/UserType";
 
 const http = axios.create({
-  baseURL: "http://localhost:4000/crud",
+  baseURL: "http://localhost:4000/users",
 });
 
 export const api = {
   getAllContacts: async () => {
-    let response = await http.get("/get");
-    return response.data;
+    try {
+      let response = await http.get("/");
+      return response.data;
+    } catch (err) {
+      console.error(err);
+    }
   },
-
   deleteContact: async (id: string) => {
-    let response = await axios.delete(
-      `http://localhost:4000/crud/delete/${id}`
-    );
+    try {
+      await http.delete(`${id}`);
+    } catch (err) {
+      console.error(err);
+    }
   },
 
   editContact: async (item: UserType) => {
-    let response = await axios.put(
-      `http://localhost:4000/crud/update/${item._id}`,
-      item
-    );
+    try {
+      await http.patch(`${item._id}`, item);
+    } catch (err) {
+      console.error(err);
+    }
   },
 
   addNewContact: async (
@@ -31,12 +37,16 @@ export const api = {
     phoneNumber: string,
     email: string
   ) => {
-    let response = await http.post("/post", {
-      fullName,
-      address,
-      phoneNumber,
-      email,
-    });
-    return response.data;
+    try {
+      let response = await http.post("/", {
+        fullName,
+        address,
+        phoneNumber,
+        email,
+      });
+      return response.data;
+    } catch (err) {
+      console.error(err);
+    }
   },
 };
