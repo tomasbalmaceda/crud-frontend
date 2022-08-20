@@ -27,8 +27,7 @@ export const ReadOnlyRow = ({ item, setEditableModeId }: Props) => {
   const { setLoading } = useContext(DataContext);
 
   const handleDeleteContact = async (contactId: string) => {
-    api.deleteContact(contactId);
-
+    await api.deleteContact(contactId);
     setLoading(true);
   };
 

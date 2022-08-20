@@ -21,10 +21,12 @@ export const Table = () => {
   const [contactsData, setContactsData] = useState<UserType[]>([]);
 
   useEffect(() => {
-    api.getAllContacts().then((response) => {
-      setContactsData(response);
-      setLoading(false);
-    });
+    if (loading) {
+      api.getAllContacts().then((response) => {
+        setContactsData(response);
+        setLoading(false);
+      });
+    }
   }, [loading]);
 
   return (

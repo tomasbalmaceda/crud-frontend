@@ -43,11 +43,9 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
     }));
   };
 
-  const handleEditContact = () => {
-    api.editContact(tempData);
-
+  const handleEditContact = async () => {
+    await api.editContact(tempData);
     setLoading(true);
-
     setEditableModeId("");
   };
 
