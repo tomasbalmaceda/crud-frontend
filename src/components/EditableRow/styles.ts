@@ -18,8 +18,16 @@ export const StyledTextField = styled(TextField)`
 `;
 
 export const StyledButton = styled(Button)`
+  div {
+    height: 23px;
+  }
+
   && {
-    font-family: "Nanum Gothic", sans-serif;
-    margin: 5px;
+    background-color: #303134;
+    margin: 3px;
+  }
+
+  &&:hover {
+    background-color: #353535;
   }
 `;

@@ -13,12 +13,19 @@ import { UserType } from "../../types/UserType";
 
 import { DataContext } from "../../contexts/DataContext";
 
+import Tables from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+
 export const Table = () => {
   const { loading, setLoading } = useContext(DataContext);
 
   const [editableModeId, setEditableModeId] = useState("");
 
   const [contactsData, setContactsData] = useState<UserType[]>([]);
+
+  console.log("renderizou");
 
   useEffect(() => {
     if (loading) {
@@ -32,40 +39,42 @@ export const Table = () => {
   return (
     <>
       {loading ? (
-        <CircularProgress />
+        <C.StyledLoading />
       ) : (
         <>
           {contactsData.length > 0 && (
-            <C.Container>
-              <C.Table>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {contactsData.map((item, index) => (
-                    <Fragment key={index}>
-                      {editableModeId === item._id ? (
-                        <EditableRow
-                          item={item}
-                          setEditableModeId={setEditableModeId}
-                        />
-                      ) : (
-                        <ReadOnlyRow
-                          item={item}
-                          setEditableModeId={setEditableModeId}
-                        />
-                      )}
-                    </Fragment>
-                  ))}
-                </tbody>
-              </C.Table>
-            </C.Container>
+            <div>
+              <C.StyledTable>
+                <Tables sx={{ minWidth: 650 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <C.StyledCell>Name</C.StyledCell>
+                      <C.StyledCell>Address</C.StyledCell>
+                      <C.StyledCell>Phone Number</C.StyledCell>
+                      <C.StyledCell>Email</C.StyledCell>
+                      <C.StyledCell>Actions</C.StyledCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {contactsData.map((item, index) => (
+                      <Fragment key={index}>
+                        {editableModeId === item._id ? (
+                          <EditableRow
+                            item={item}
+                            setEditableModeId={setEditableModeId}
+                          />
+                        ) : (
+                          <ReadOnlyRow
+                            item={item}
+                            setEditableModeId={setEditableModeId}
+                          />
+                        )}
+                      </Fragment>
+                    ))}
+                  </TableBody>
+                </Tables>
+              </C.StyledTable>
+            </div>
           )}
         </>
       )}

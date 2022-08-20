@@ -8,6 +8,12 @@ import { api } from "../../helpers/api";
 
 import { DataContext } from "../../contexts/DataContext";
 
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import ClearIcon from "@mui/icons-material/Clear";
+
 import { motion } from "framer-motion";
 
 const svgVariants = {
@@ -50,8 +56,8 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
   };
 
   return (
-    <tr>
-      <td>
+    <TableRow>
+      <TableCell>
         <C.StyledTextField
           size="small"
           id="outlined-basic"
@@ -62,8 +68,8 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           onChange={handleChangeEditContact}
           name="fullName"
         />
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         <C.StyledTextField
           size="small"
           id="outlined-basic"
@@ -74,8 +80,8 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           onChange={handleChangeEditContact}
           name="address"
         />
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         <C.StyledTextField
           size="small"
           id="outlined-basic"
@@ -86,8 +92,8 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           onChange={handleChangeEditContact}
           name="phoneNumber"
         />
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         <C.StyledTextField
           size="small"
           id="outlined-basic"
@@ -98,42 +104,22 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           onChange={handleChangeEditContact}
           name="email"
         />
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         <C.StyledButton variant="contained" onClick={handleEditContact}>
-          <motion.svg
-            variants={svgVariants}
-            initial="hidden"
-            animate="visible"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-          >
-            <path
-              fill="#FFFFFF"
-              d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"
-            />
-          </motion.svg>
+          <motion.div variants={svgVariants} initial="hidden" animate="visible">
+            <SaveAltIcon />
+          </motion.div>
         </C.StyledButton>
         <C.StyledButton
           variant="contained"
           onClick={() => setEditableModeId("")}
         >
-          <motion.svg
-            variants={svgVariants}
-            initial="hidden"
-            animate="visible"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-          >
-            <path
-              fill="#FFFFFF"
-              d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
-            />
-          </motion.svg>
+          <motion.div variants={svgVariants} initial="hidden" animate="visible">
+            <ClearIcon />
+          </motion.div>
         </C.StyledButton>
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 };

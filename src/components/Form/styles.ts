@@ -24,6 +24,12 @@ export const Form = styled.form`
 
 export const StyledButton = styled(Button)`
   && {
+    background-color: #303134;
+    margin-left: 10px;
     font-family: "Nanum Gothic", sans-serif;
+  }
+
+  &&:hover {
+    background-color: #353535;
   }
 `;

@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Nanum Gothic', sans-serif;
-    background-color: #17181f;
+    background-color: #171717;
   }
 `;
 
