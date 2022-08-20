@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div``;
 
 export const Header = styled.div`
+  margin-top: 7.5px;
   display: flex;
   justify-content: center;
 `;

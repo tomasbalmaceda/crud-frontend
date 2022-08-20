@@ -57,7 +57,7 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
 
   return (
     <TableRow>
-      <TableCell>
+      <C.StyledCell>
         <C.StyledTextField
           size="small"
           id="outlined-basic"
@@ -68,8 +68,8 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           onChange={handleChangeEditContact}
           name="fullName"
         />
-      </TableCell>
-      <TableCell>
+      </C.StyledCell>
+      <C.StyledCell>
         <C.StyledTextField
           size="small"
           id="outlined-basic"
@@ -80,8 +80,8 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           onChange={handleChangeEditContact}
           name="address"
         />
-      </TableCell>
-      <TableCell>
+      </C.StyledCell>
+      <C.StyledCell>
         <C.StyledTextField
           size="small"
           id="outlined-basic"
@@ -92,8 +92,8 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           onChange={handleChangeEditContact}
           name="phoneNumber"
         />
-      </TableCell>
-      <TableCell>
+      </C.StyledCell>
+      <C.StyledCell>
         <C.StyledTextField
           size="small"
           id="outlined-basic"
@@ -104,8 +104,8 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           onChange={handleChangeEditContact}
           name="email"
         />
-      </TableCell>
-      <TableCell>
+      </C.StyledCell>
+      <C.StyledCell>
         <C.StyledButton variant="contained" onClick={handleEditContact}>
           <motion.div variants={svgVariants} initial="hidden" animate="visible">
             <SaveAltIcon />
@@ -119,7 +119,7 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
             <ClearIcon />
           </motion.div>
         </C.StyledButton>
-      </TableCell>
+      </C.StyledCell>
     </TableRow>
   );
 };

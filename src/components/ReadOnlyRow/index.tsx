@@ -43,7 +43,7 @@ export const ReadOnlyRow = ({ item, setEditableModeId }: Props) => {
       <C.StyledCell>{item.address}</C.StyledCell>
       <C.StyledCell>{item.phoneNumber}</C.StyledCell>
       <C.StyledCell>{item.email}</C.StyledCell>
-      <TableCell>
+      <C.StyledCell>
         <C.StyledButton
           variant="contained"
           onClick={() => setEditableModeId(item._id)}
@@ -60,7 +60,7 @@ export const ReadOnlyRow = ({ item, setEditableModeId }: Props) => {
             <DeleteIcon />
           </motion.div>
         </C.StyledButton>
-      </TableCell>
+      </C.StyledCell>
     </TableRow>
   );
 };

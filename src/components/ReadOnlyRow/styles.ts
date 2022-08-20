@@ -19,6 +19,8 @@ export const StyledButton = styled(Button)`
 
 export const StyledCell = styled(TableCell)`
   && {
+    border-bottom: 1px solid #616161;
+    text-align: center;
     color: rgba(116, 109, 109, 0.973);
   }
 `;
