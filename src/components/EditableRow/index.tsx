@@ -20,7 +20,6 @@ const svgVariants = {
   hidden: { rotate: 90 },
   visible: {
     rotate: 0,
-    transtion: { duration: 1 },
   },
 };
 

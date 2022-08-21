@@ -8,19 +8,19 @@ export const StyledButton = styled(Button)`
     height: 23px;
   }
   && {
-    background-color: #303134;
+    background-color: ${(props) => props.theme.colors.button};
     margin: 3px;
   }
 
   &&:hover {
-    background-color: #353535;
+    background-color: ${(props) => props.theme.colors.buttonPressed};
   }
 `;
 
 export const StyledCell = styled(TableCell)`
   && {
-    border-bottom: 1px solid #616161;
+    border-bottom: 1px solid ${(props) => props.theme.colors.border};
     text-align: center;
-    color: rgba(116, 109, 109, 0.973);
+    color: ${(props) => props.theme.colors.text};
   }
 `;

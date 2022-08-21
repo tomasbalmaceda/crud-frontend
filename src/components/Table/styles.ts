@@ -5,21 +5,21 @@ import TableCell from "@mui/material/TableCell";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export const StyledTable = styled(TableContainer)`
-  background-color: #202124;
+  background-color: ${(props) => props.theme.colors.tableBackground};
   border-radius: 10px;
   padding: 20px;
 `;
 
 export const StyledCell = styled(TableCell)`
   && {
-    border-bottom: 1px solid #616161;
+    border-bottom: 1px solid ${(props) => props.theme.colors.border};
     text-align: center;
-    color: rgba(116, 109, 109, 0.973);
+    color: ${(props) => props.theme.colors.text};
   }
 `;
 
 export const StyledLoading = styled(CircularProgress)`
   && {
-    color: rgba(116, 109, 109, 0.973);
+    color: ${(props) => props.theme.colors.text};
   }
 `;

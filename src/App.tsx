@@ -5,13 +5,20 @@ import { Form } from "./components/Form";
 
 import { DataContextProvider } from "./contexts/DataContext";
 
+import { Header } from "./components/Header";
+
+import { useContext } from "react";
+
+import { ThemeContext } from "./contexts/ThemeContext";
+import { ThemeProvider } from "styled-components";
+
 const App = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <C.Container>
+    <ThemeProvider theme={theme}>
       <C.GlobalStyle />
-      <C.Header>
-        <C.Title>CRUD</C.Title>
-      </C.Header>
+      <Header />
       <DataContextProvider>
         <C.Table>
           <Form />
@@ -20,7 +27,7 @@ const App = () => {
           <Table />
         </C.Table>
       </DataContextProvider>
-    </C.Container>
+    </ThemeProvider>
   );
 };
 

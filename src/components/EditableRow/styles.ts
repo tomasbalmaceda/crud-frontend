@@ -5,11 +5,12 @@ import Button from "@mui/material/Button";
 import TableCell from "@mui/material/TableCell";
 
 export const StyledTextField = styled(TextField)`
-  background-color: #ffffff;
-  border-radius: 4px;
-  margin: 4px !important;
-  width: 130px;
-
+  && {
+    width: 130px;
+    margin: 4px;
+    border-radius: 4px;
+    background-color: ${(props) => props.theme.colors.input};
+  }
   input {
     font-family: "Nanum Gothic", sans-serif;
   }
@@ -24,20 +25,20 @@ export const StyledButton = styled(Button)`
   }
 
   && {
-    background-color: #303134;
+    background-color: ${(props) => props.theme.colors.button};
     margin: 3px;
   }
 
   &&:hover {
-    background-color: #353535;
+    background-color: ${(props) => props.theme.colors.buttonPressed};
   }
 `;
 
 export const StyledCell = styled(TableCell)`
   && {
-    border-bottom: 1px solid #616161;
     padding: 10px;
+    border-bottom: 1px solid ${(props) => props.theme.colors.border};
     text-align: center;
-    color: rgba(116, 109, 109, 0.973);
+    color: ${(props) => props.theme.colors.text};
   }
 `;

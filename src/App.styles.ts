@@ -11,21 +11,8 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Nanum Gothic', sans-serif;
-    background-color: #171717;
+    background-color: ${(props) => props.theme.colors.background};
   }
-`;
-
-export const Container = styled.div``;
-
-export const Header = styled.div`
-  margin-top: 7.5px;
-  display: flex;
-  justify-content: center;
-`;
-
-export const Title = styled.h1`
-  color: white;
-  border-radius: 5px;
 `;
 
 export const Table = styled.div`

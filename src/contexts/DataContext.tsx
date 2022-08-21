@@ -12,13 +12,11 @@ const initialState = {
 
 export const DataContext = createContext<ContextType>(initialState);
 
-type ComponentWithChildrenProps = {
+type Props = {
   children: React.ReactNode;
 };
 
-export const DataContextProvider = ({
-  children,
-}: ComponentWithChildrenProps) => {
+export const DataContextProvider = ({ children }: Props) => {
   const [loading, setLoading] = useState(initialState.loading);
 
   return (

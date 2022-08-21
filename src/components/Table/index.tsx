@@ -25,8 +25,6 @@ export const Table = () => {
 
   const [contactsData, setContactsData] = useState<UserType[]>([]);
 
-  console.log("renderizou");
-
   useEffect(() => {
     if (loading) {
       api.getAllContacts().then((response) => {

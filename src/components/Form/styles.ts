@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 export const StyledTextField = styled(TextField)`
-  background-color: #eeeeee;
+  background-color: ${(props) => props.theme.colors.input};
   border-radius: 4px;
   margin: 4px !important;
   width: 160px;
@@ -24,12 +24,12 @@ export const Form = styled.form`
 
 export const StyledButton = styled(Button)`
   && {
-    background-color: #303134;
     margin-left: 10px;
+    background-color: ${(props) => props.theme.colors.button};
     font-family: "Nanum Gothic", sans-serif;
   }
 
   &&:hover {
-    background-color: #353535;
+    background-color: ${(props) => props.theme.colors.buttonPressed};
   }
 `;
