@@ -1,4 +1,4 @@
-import React, { useContext, useState, SetStateAction } from "react";
+import React, { useContext, useEffect, SetStateAction, useRef } from "react";
 
 import * as C from "./styles";
 
@@ -9,14 +9,13 @@ import { api } from "../../helpers/api";
 import { DataContext } from "../../contexts/DataContext";
 
 import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
 
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import ClearIcon from "@mui/icons-material/Clear";
 
 import { motion } from "framer-motion";
 
-const svgVariants = {
+const divVariants = {
   hidden: { rotate: 90 },
   visible: {
     rotate: 0,
@@ -31,25 +30,37 @@ type Props = {
 export const EditableRow = ({ item, setEditableModeId }: Props) => {
   const { setLoading } = useContext(DataContext);
 
-  const [tempData, setTempData] = useState({
-    _id: item._id,
-    fullName: item.fullName,
-    address: item.address,
-    phoneNumber: item.phoneNumber,
-    email: item.email,
-  });
+  const fullNameRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const addressRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const phoneNumberRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const emailRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const handleChangeEditContact = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setTempData((prevEditFormData) => ({
-      ...prevEditFormData,
-      [name]: value,
-    }));
-  };
+  useEffect(() => {
+    fullNameRef.current.value = item.fullName;
+    addressRef.current.value = item.address;
+    phoneNumberRef.current.value = item.phoneNumber;
+    emailRef.current.value = item.email;
+  }, []);
 
   const handleEditContact = async () => {
-    await api.editContact(tempData);
+    const user = {
+      _id: item._id,
+      fullName: fullNameRef.current.value,
+      address: addressRef.current.value,
+      phoneNumber: phoneNumberRef.current.value,
+      email: emailRef.current.value,
+    };
+
+    if (
+      fullNameRef.current.value === item.fullName &&
+      addressRef.current.value === item.address &&
+      phoneNumberRef.current.value === item.phoneNumber &&
+      emailRef.current.value === item.email
+    ) {
+      return setEditableModeId("");
+    }
+
+    await api.editContact(user);
     setLoading(true);
     setEditableModeId("");
   };
@@ -63,9 +74,7 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           label="Enter a name..."
           type="text"
           required
-          value={tempData.fullName}
-          onChange={handleChangeEditContact}
-          name="fullName"
+          inputRef={fullNameRef}
         />
       </C.StyledCell>
       <C.StyledCell>
@@ -75,9 +84,7 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           label="Enter a address..."
           type="text"
           required
-          value={tempData.address}
-          onChange={handleChangeEditContact}
-          name="address"
+          inputRef={addressRef}
         />
       </C.StyledCell>
       <C.StyledCell>
@@ -87,9 +94,7 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           label="Enter a phone number..."
           type="text"
           required
-          value={tempData.phoneNumber}
-          onChange={handleChangeEditContact}
-          name="phoneNumber"
+          inputRef={phoneNumberRef}
         />
       </C.StyledCell>
       <C.StyledCell>
@@ -99,14 +104,12 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           label="Enter an email..."
           type="email"
           required
-          value={tempData.email}
-          onChange={handleChangeEditContact}
-          name="email"
+          inputRef={emailRef}
         />
       </C.StyledCell>
       <C.StyledCell>
         <C.StyledButton variant="contained" onClick={handleEditContact}>
-          <motion.div variants={svgVariants} initial="hidden" animate="visible">
+          <motion.div variants={divVariants} initial="hidden" animate="visible">
             <SaveAltIcon />
           </motion.div>
         </C.StyledButton>
@@ -114,7 +117,7 @@ export const EditableRow = ({ item, setEditableModeId }: Props) => {
           variant="contained"
           onClick={() => setEditableModeId("")}
         >
-          <motion.div variants={svgVariants} initial="hidden" animate="visible">
+          <motion.div variants={divVariants} initial="hidden" animate="visible">
             <ClearIcon />
           </motion.div>
         </C.StyledButton>

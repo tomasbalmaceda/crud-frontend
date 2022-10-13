@@ -7,8 +7,6 @@ import { api } from "../../helpers/api";
 import { ReadOnlyRow } from "../ReadOnlyRow";
 import { EditableRow } from "../EditableRow";
 
-import CircularProgress from "@mui/material/CircularProgress";
-
 import { UserType } from "../../types/UserType";
 
 import { DataContext } from "../../contexts/DataContext";
