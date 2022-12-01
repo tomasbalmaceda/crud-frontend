@@ -10,7 +10,7 @@ export const Header = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const [checked, setChecked] = useState(false);
 
-  const handleChange = () => {
+  const handleSwitchTheme = () => {
     setTheme(theme === light ? dark : light);
     setChecked(!checked);
   };
@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <C.Header>
       <C.Title>CRUD</C.Title>
-      <C.MaterialUISwitch onChange={() => handleChange()} />
+      <C.Switch onChange={() => handleSwitchTheme()} />
     </C.Header>
   );
 };

@@ -3,17 +3,19 @@ import * as C from "./styles";
 
 import { api } from "../../helpers/api";
 
-import { DataContext } from "../../contexts/DataContext";
+import { LoadingContext } from "../../contexts/LoadingContext";
+
+import { motion } from "framer-motion";
 
 export const Form = () => {
-  const { setLoading } = useContext(DataContext);
+  const { setIsLoading } = useContext(LoadingContext);
 
   const fullNameRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const addressRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const phoneNumberRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const emailRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleAddNewContact = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     await api.addNewContact(
@@ -28,48 +30,62 @@ export const Form = () => {
     phoneNumberRef.current.value = "";
     emailRef.current.value = "";
 
-    setLoading(true);
+    setIsLoading(true);
   };
 
   return (
     <div>
-      <C.Form onSubmit={handleFormSubmit}>
-        <C.StyledTextField
-          variant="filled"
-          type="text"
-          label="Enter a name..."
-          required
-          size="small"
-          inputRef={fullNameRef}
-        />
-        <C.StyledTextField
-          variant="filled"
-          type="text"
-          label="Enter a address..."
-          required
-          size="small"
-          inputRef={addressRef}
-        />
-        <C.StyledTextField
-          variant="filled"
-          type="text"
-          label="Enter a phone..."
-          required
-          size="small"
-          inputRef={phoneNumberRef}
-        />
-        <C.StyledTextField
-          variant="filled"
-          type="email"
-          label="Enter an email..."
-          required
-          size="small"
-          inputRef={emailRef}
-        />
+      <C.Form onSubmit={handleAddNewContact}>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.09 }}>
+          <C.TextInput
+            variant="filled"
+            type="text"
+            label="Enter a name..."
+            required
+            size="small"
+            inputRef={fullNameRef}
+            inputProps={{ maxLength: 20 }}
+          />
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.09 }}>
+          <C.TextInput
+            variant="filled"
+            type="text"
+            label="Enter a address..."
+            required
+            size="small"
+            inputRef={addressRef}
+            inputProps={{ maxLength: 20 }}
+          />
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.09 }}>
+          <C.TextInput
+            variant="filled"
+            type="email"
+            label="Enter an email..."
+            required
+            size="small"
+            inputRef={emailRef}
+            inputProps={{ maxLength: 20 }}
+          />
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.09 }}>
+          <C.TextInput
+            variant="filled"
+            type="text"
+            label="Enter a phone..."
+            required
+            size="small"
+            inputRef={phoneNumberRef}
+            inputProps={{ maxLength: 20 }}
+          />
+        </motion.div>
 
-        <C.StyledButton variant="contained" type="submit">
-          Add
-        </C.StyledButton>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <C.Button variant="contained" type="submit">
+            Add
+          </C.Button>
+        </motion.div>
       </C.Form>
     </div>
   );

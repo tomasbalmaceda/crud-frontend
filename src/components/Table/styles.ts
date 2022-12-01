@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
-import TableContainer from "@mui/material/TableContainer";
-import TableCell from "@mui/material/TableCell";
-import CircularProgress from "@mui/material/CircularProgress";
+import {
+  TableContainer as MuiContainer,
+  TableCell as MuiCell,
+  CircularProgress as MuiProgress,
+} from "@mui/material";
 
-export const StyledTable = styled(TableContainer)`
+export const Container = styled(MuiContainer)`
   background-color: ${(props) => props.theme.colors.tableBackground};
   border-radius: 10px;
   padding: 20px;
 `;
 
-export const StyledCell = styled(TableCell)`
+export const Cell = styled(MuiCell)`
   && {
     border-bottom: 1px solid ${(props) => props.theme.colors.border};
     text-align: center;
@@ -18,7 +20,7 @@ export const StyledCell = styled(TableCell)`
   }
 `;
 
-export const StyledLoading = styled(CircularProgress)`
+export const Progress = styled(MuiProgress)`
   && {
     color: ${(props) => props.theme.colors.text};
   }

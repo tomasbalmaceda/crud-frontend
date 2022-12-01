@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-import Button from "@mui/material/Button";
-import TableCell from "@mui/material/TableCell";
+import { TableCell as MuiCell, Button as MuiButton } from "@mui/material";
 
-export const StyledButton = styled(Button)`
-  div {
+export const Button = styled(MuiButton)`
+  svg {
     height: 23px;
   }
+
   && {
     background-color: ${(props) => props.theme.colors.button};
     margin: 3px;
@@ -17,10 +17,15 @@ export const StyledButton = styled(Button)`
   }
 `;
 
-export const StyledCell = styled(TableCell)`
+export const Cell = styled(MuiCell)`
   && {
     border-bottom: 1px solid ${(props) => props.theme.colors.border};
     text-align: center;
     color: ${(props) => props.theme.colors.text};
   }
+`;
+
+export const DisplayDiv = styled.div`
+  display: flex;
+  margin: 6px;
 `;

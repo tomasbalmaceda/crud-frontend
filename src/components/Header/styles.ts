@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Switch from "@mui/material/Switch";
+import { Switch as MuiSwitch } from "@mui/material";
 
 export const Header = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export const Title = styled.h1`
   text-align: right;
 `;
 
-export const MaterialUISwitch = styled(Switch)`
+export const Switch = styled(MuiSwitch)`
   && {
     margin-left: auto;
     margin-right: 0;

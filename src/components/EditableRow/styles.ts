@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import TableCell from "@mui/material/TableCell";
+import {
+  TextField as MuiField,
+  Button as MuiButton,
+  TableCell as MuiCell,
+} from "@mui/material";
 
-export const StyledTextField = styled(TextField)`
+export const TextInput = styled(MuiField)`
   && {
     width: 130px;
     margin: 4px;
@@ -19,8 +21,8 @@ export const StyledTextField = styled(TextField)`
   }
 `;
 
-export const StyledButton = styled(Button)`
-  div {
+export const Button = styled(MuiButton)`
+  svg {
     height: 23px;
   }
 
@@ -34,11 +36,16 @@ export const StyledButton = styled(Button)`
   }
 `;
 
-export const StyledCell = styled(TableCell)`
+export const Cell = styled(MuiCell)`
   && {
     padding: 10px;
     border-bottom: 1px solid ${(props) => props.theme.colors.border};
     text-align: center;
     color: ${(props) => props.theme.colors.text};
   }
+`;
+
+export const DisplayDiv = styled.div`
+  display: flex;
+  margin: 6px;
 `;

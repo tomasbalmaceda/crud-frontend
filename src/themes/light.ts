@@ -3,8 +3,8 @@ export default {
 
   colors: {
     themeButton: "#a2a2a2",
-    button: "#848484",
-    buttonPressed: "#5e5e5e",
+    button: "#b5b5b5",
+    buttonPressed: "#848484",
     input: "#efefefef",
     titleText: "black",
     tableBackground: "#efefefef",

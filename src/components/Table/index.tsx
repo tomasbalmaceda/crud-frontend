@@ -7,69 +7,71 @@ import { api } from "../../helpers/api";
 import { ReadOnlyRow } from "../ReadOnlyRow";
 import { EditableRow } from "../EditableRow";
 
-import { UserType } from "../../types/UserType";
+import { ContactType } from "../../types/ContactType";
 
-import { DataContext } from "../../contexts/DataContext";
+import { LoadingContext } from "../../contexts/LoadingContext";
 
-import Tables from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import {
+  Table as MuiTable,
+  TableBody as MuiTableBody,
+  TableHead as MuiTableHead,
+  TableRow as MuiTableRow,
+} from "@mui/material";
 
 export const Table = () => {
-  const { loading, setLoading } = useContext(DataContext);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
 
   const [editableModeId, setEditableModeId] = useState("");
 
-  const [contactsData, setContactsData] = useState<UserType[]>([]);
+  const [contactsData, setContactsData] = useState<ContactType[]>([]);
 
   useEffect(() => {
-    if (loading) {
+    if (isLoading) {
       api.getAllContacts().then((response) => {
         setContactsData(response);
-        setLoading(false);
+        setIsLoading(false);
       });
     }
-  }, [loading]);
+  }, [isLoading]);
 
   return (
     <>
-      {loading ? (
-        <C.StyledLoading />
+      {isLoading ? (
+        <C.Progress />
       ) : (
         <>
           {contactsData.length > 0 && (
             <div>
-              <C.StyledTable>
-                <Tables sx={{ minWidth: 650 }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <C.StyledCell>Name</C.StyledCell>
-                      <C.StyledCell>Address</C.StyledCell>
-                      <C.StyledCell>Phone Number</C.StyledCell>
-                      <C.StyledCell>Email</C.StyledCell>
-                      <C.StyledCell>Actions</C.StyledCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {contactsData.map((item, index) => (
+              <C.Container>
+                <MuiTable sx={{ minWidth: 650 }} aria-label="simple table">
+                  <MuiTableHead>
+                    <MuiTableRow>
+                      <C.Cell>Name</C.Cell>
+                      <C.Cell>Address</C.Cell>
+                      <C.Cell>Phone Number</C.Cell>
+                      <C.Cell>Email</C.Cell>
+                      <C.Cell>Actions</C.Cell>
+                    </MuiTableRow>
+                  </MuiTableHead>
+                  <MuiTableBody>
+                    {contactsData.map((contact, index) => (
                       <Fragment key={index}>
-                        {editableModeId === item._id ? (
+                        {editableModeId === contact._id ? (
                           <EditableRow
-                            item={item}
+                            contact={contact}
                             setEditableModeId={setEditableModeId}
                           />
                         ) : (
                           <ReadOnlyRow
-                            item={item}
+                            contact={contact}
                             setEditableModeId={setEditableModeId}
                           />
                         )}
                       </Fragment>
                     ))}
-                  </TableBody>
-                </Tables>
-              </C.StyledTable>
+                  </MuiTableBody>
+                </MuiTable>
+              </C.Container>
             </div>
           )}
         </>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { UserType } from "../types/UserType";
+import { ContactType } from "../types/ContactType";
 
 const http = axios.create({
   baseURL: "http://localhost:4000/users",
@@ -23,9 +23,9 @@ export const api = {
     }
   },
 
-  editContact: async (item: UserType) => {
+  editContact: async (contact: ContactType) => {
     try {
-      await http.patch(`${item._id}`, item);
+      await http.patch(`${contact._id}`, contact);
     } catch (err) {
       console.error(err);
     }
@@ -37,13 +37,15 @@ export const api = {
     phoneNumber: string,
     email: string
   ) => {
+    const contact = {
+      fullName,
+      address,
+      phoneNumber,
+      email,
+    };
+
     try {
-      let response = await http.post("/", {
-        fullName,
-        address,
-        phoneNumber,
-        email,
-      });
+      let response = await http.post("/", contact);
       return response.data;
     } catch (err) {
       console.error(err);

@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { TextField as MuiField, Button as MuiButton } from "@mui/material";
 
-export const StyledTextField = styled(TextField)`
+export const TextInput = styled(MuiField)`
   background-color: ${(props) => props.theme.colors.input};
   border-radius: 4px;
-  margin: 4px !important;
+
   width: 160px;
+
+  && {
+    margin: 5px;
+  }
 
   input {
     font-family: "Nanum Gothic", sans-serif;
@@ -22,7 +25,7 @@ export const Form = styled.form`
   align-items: center;
 `;
 
-export const StyledButton = styled(Button)`
+export const Button = styled(MuiButton)`
   && {
     margin-left: 10px;
     background-color: ${(props) => props.theme.colors.button};

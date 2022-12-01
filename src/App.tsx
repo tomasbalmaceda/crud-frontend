@@ -3,7 +3,7 @@ import * as C from "./App.styles";
 import { Table } from "./components/Table";
 import { Form } from "./components/Form";
 
-import { DataContextProvider } from "./contexts/DataContext";
+import { LoadingContextProvider } from "./contexts/LoadingContext";
 
 import { Header } from "./components/Header";
 
@@ -19,14 +19,14 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <C.GlobalStyle />
       <Header />
-      <DataContextProvider>
+      <LoadingContextProvider>
         <C.Table>
           <Form />
         </C.Table>
         <C.Table>
           <Table />
         </C.Table>
-      </DataContextProvider>
+      </LoadingContextProvider>
     </ThemeProvider>
   );
 };
